@@ -31,6 +31,17 @@
 
 → Với monthly $30–$240, công ty tiết kiệm **$4,470–$17,761/tháng** so với thuê nhân viên. Ngay cả mùa cao điểm (Scenario B), chi phí AI vẫn chưa bằng **1.5%** chi phí nhân viên.
 
+**Cost/user thực tế (theo mùa):**
+- Tháng thấp (350 users/day): **$0.00078/user**
+- Tháng trung bình (550 users/day): **$0.00105/user**
+- Tháng cao (750 users/day): **$0.00136/user**
+
+→ **1 user = 0.1 cent**. 1 nhân viên xử lý 1 conversation = 50 cent. AI rẻ hơn ~500×.
+
+**Chi phí triển khai (1 lần): $2,700–$6,800**
+**Chi phí vận hành/năm: ~$2,800**
+→ Break-even sau **1 tháng**. ROI năm 1: **~$195,000** (tiết kiệm so với human).
+
 ### 2. Quality — "đúng mức trí thông minh cho đúng câu hỏi"
 
 - **59% câu hỏi là Guide/Destination** (FAQ đơn giản: "đi Đà Nẵng mùa nào đẹp?") → GPT-5 nano đủ xử lý. Không cần GPT-5.5 để trả lời câu hỏi đơn giản.

@@ -38,9 +38,37 @@ Khi sếp hỏi "Nên deploy config nào?", bạn cần đặt lên bàn **1 b�
 
 ---
 
+## Bảng phụ — Scenario Realistic (1.7 turns, 500 conv/day)
+
+Từ `03-cost-calculation-realistic.md` — dữ liệu thực tế hơn: 65% conversation chỉ 1 turn, avg 1.7 turns.
+
+| | Config 1 | Config 2 | Config 3 | Config 4 |
+|---|---|---|---|---|
+| **Cost / conv** | **$0.000089** | **$0.0095** | **$0.000159** | **$0.000551** |
+| **Monthly (500 conv/day)** | **$1.33** | **$142.35** | **$2.39** | **$8.27** |
+| **vs human ($7,500/mo)** | rẻ **5,640×** | rẻ **52.6×** | rẻ **3,140×** | rẻ **906×** |
+
+---
+
+## Bảng phụ — Cost/User thực tế (theo mùa)
+
+Từ `06-seasonal-analysis.md` — agency vừa (350–750 users/ngày).
+
+| Config | Tháng thấp (350 users/day) | Tháng TB (550 users/day) | Tháng cao (750 users/day) |
+|---|---|---|---|
+| **Budget Bot** | **$0.00010/user** | **$0.00010/user** | **$0.00010/user** |
+| **Smart Mix** | **$0.00078/user** | **$0.00105/user** | **$0.00136/user** |
+| **Deep Value** | **$0.00262/user** | **$0.00273/user** | **$0.00284/user** |
+| **Premium** | **$0.048/user** | **$0.051/user** | **$0.057/user** |
+| **Human** | **$0.50/user** | **$0.50/user** | **$0.50/user** |
+
+→ **1 user Smart Mix = 0.1 cent**. **1 user human = 50 cent**. AI rẻ hơn ~500×.
+
+---
+
 ## Quan sát nhanh từ bảng
 
-Trước khi sang file recommendation, trả lời 4 câu — đây là material để present:
+Trước khi sang file recommendation, trả lời 6 câu — đây là material để present:
 
 ### Câu 1 — Config rẻ nhất là gì? Đắt nhất là gì?
 
@@ -51,8 +79,6 @@ Chênh: 233× lần
 ```
 
 ### Câu 2 — Knob nào ảnh hưởng cost nhiều nhất?
-
-So sánh các config khác nhau ở knob nào, chênh bao nhiêu. Thường: model tier > history > web search.
 
 ```text
 Model tier ảnh hưởng cost NHIỀU NHẤT.
@@ -71,10 +97,6 @@ Vậy web search là knob ảnh hưởng YẾU NHẤT đến cost tổng.
 
 ### Câu 3 — Tại sao Scenario B không đắt ×4 lần Scenario A?
 
-Volume Scenario B = ×4 lần Scenario A. Turns dài hơn (7 vs 4 = ×1.75). Mong đợi monthly B ≈ A × 7. Thực tế có thể thấp hơn vì sao?
-
-Trước khi viết, nghĩ: intent mix Scenario B có gì khác? Booking + Complaint = $0 LLM ở scenario B là bao nhiêu %?
-
 ```text
 Scenario B có AI-served ratio chỉ 55% (vs 85% ở A) → 45% conversations là Booking/Complaint
 = handoff $0 LLM cost. Intent mix B: Guide 30%, Visa 15%, Weather 10%, Booking 35%, Complaint 10%.
@@ -84,9 +106,7 @@ Ngoài ra, Scenario B intent mix giảm Guide (cheapest, 59% → 30%) và tăng 
 Weighted avg cost/conv B thấp hơn so với nếu giữ cùng intent mix A.
 ```
 
-### Câu  4 — Có config nào AI đắt hơn human không?
-
-So sánh monthly từng config với human baseline ($4,500 cho A, $18,000 cho B). Nếu AI rẻ hơn → savings %. Nếu đắt hơn → cần justify.
+### Câu 4 — Có config nào AI đắt hơn human không?
 
 ```text
 KHÔNG có config nào đắt hơn human baseline.
@@ -102,12 +122,34 @@ Smart Mix rẻ hơn human 150× (A) / 75× (B) — "sweet spot" rõ ràng.
 Lợi ích ngoài cost: hoạt động 24/7, đa ngôn ngữ, scale tuyến tính, consistency 100%.
 ```
 
+### Câu 5 — Cost/user thực tế là bao nhiêu?
+
+```text
+Smart Mix: $0.00105/user (tháng cao điểm, 750 users/ngày) | $0.00078/user (tháng thấp, 350 users/ngày)
+Budget Bot: $0.00010/user (không đổi theo volume)
+Premium: $0.057/user
+
+→ 1 user dùng Smart Mix tốn 0.1 cent (1/10 của 1 xu). 1 nhân viên xử lý 1 conversation tốn 50 cent.
+AI rẻ hơn ~500× cho mỗi user.
+Nguồn: worksheet/06-seasonal-analysis.md
+```
+
+### Câu 6 — Volume thực tế khác đề bài như thế nào?
+
+```text
+Đề bài: 300–1,200 conv/day (giả định 1 conv = 1 user, 4-7 turns).
+Thực tế (Vietnam tourism 2025): Agency vừa có 350–750 users/ngày, avg 3.1 turns.
+Đề bài overestimate volume ~1.6–4× so với thực tế. Nhưng AI vẫn rẻ hơn human hàng trăm lần.
+Nguồn: worksheet/06-seasonal-analysis.md
+```
+
 ---
 
 ## Bảng kiểm trước khi sang file tiếp theo
 
 - [x] Bảng đầy đủ — không còn ô trống
-- [x] Đã có 4 câu trả lời cho 4 quan sát ở trên
+- [x] Đã có 6 câu trả lời cho 6 quan sát ở trên
 - [x] Nhóm đồng thuận về số trong bảng (đã sanity check)
+- [x] Đã thêm bảng phụ Scenario Realistic và Cost/User
 
 Xong → mở `05-recommendation.md` để viết recommendation cuối + chuẩn bị present.

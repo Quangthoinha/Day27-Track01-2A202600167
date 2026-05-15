@@ -221,4 +221,6 @@ Tên dự kiến: "Deep Value"
 - [x] Đã phác thảo ≥3 combo khác nhau (Budget Bot, Premium Concierge, Smart Mix, Deep Value)
 - [x] Nhóm đồng thuận về hướng đi mỗi combo
 
+**Note về volume thực tế:** Theo dữ liệu Vietnam tourism 2025 (VNAT) + Semrush (vietnambooking.com), agency vừa có **350–750 users/ngày** theo mùa, không phải 300–1,200 như đề bài. Avg turns thực tế: **3.1 turns** (không phải 4–7). Chi tiết: `06-seasonal-analysis.md`.
+
 Xong → 10:25 chuyển sang **Main phase**. Mở `02-config-design.md`.

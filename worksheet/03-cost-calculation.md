@@ -267,4 +267,8 @@ Mỗi config — estimate Low / Medium / High. Không có công cụ đo chính 
 
 ⚑ **Checkpoint 11:00**: ≥1 config đã tính cost xong &nbsp; · &nbsp; ⚑ **Checkpoint 11:20**: tất cả configs đã tính cost xong cho cả 2 scenarios.
 
+**Tham chiếu thêm:**
+- `03-cost-calculation-realistic.md` — Scenario với turns thực tế (1.7 turns, 65% conversation chỉ 1 turn).
+- `06-seasonal-analysis.md` — Phân tích 12 tháng theo mùa du lịch Việt Nam 2025 + cost/user thực tế.
+
 Xong → mở `04-comparison-table.md`.
